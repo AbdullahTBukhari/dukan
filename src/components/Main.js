@@ -3,6 +3,7 @@ import {
   useGetCategoryProductsQuery,
   useGetProductsQuery,
 } from '../api/FakeStoreAPI';
+import Error from './Error';
 import ImgCard from './ImgCard';
 
 const Main = ({ category }) => {
@@ -15,7 +16,7 @@ const Main = ({ category }) => {
 
   if (category) {
     if (categoryError) {
-      return <h1>404 Falcons</h1>;
+      return <Error />
     }
     if (categoryIsLoading) {
       return (
@@ -66,7 +67,7 @@ const Main = ({ category }) => {
     }
     if (data) {
       return (
-        <div className='mt-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+        <div className='mt-3 group-re grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'> 
           {data.map((product) => (
             <ImgCard key={product.id} product={product} />
           ))}

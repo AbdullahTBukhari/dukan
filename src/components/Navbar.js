@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
-
+import ShopingCart from './ShopingCart';
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const toggleDropdown = () => {setIsDropdownOpen(!isDropdownOpen);}
-
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+  // eslint-disable-next-line no-unused-vars
+  const [cartClicked, setCartClicked] = useState(false);
 
   return (
     <div>
@@ -20,10 +23,11 @@ const Navbar = () => {
               class='inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white'
               href='/'
             >
-              <img src="/logo.png" alt="logo" class='h-12 w-12' />
+              <img src='/logo.png' alt='logo' class='h-12 w-12' />
               Dukan
             </a>
-            <div class='sm:hidden'>
+            <div class='sm:hidden flex flex-row'>
+            <ShopingCart />
               <button
                 type='button'
                 class='hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800'
@@ -58,29 +62,50 @@ const Navbar = () => {
           </div>
           <div
             id='navbar-image-and-text-1'
-            class={`hs-collapse ${ isDropdownOpen? 'block' : 'hidden' } overflow-hidden transition-all duration-300 basis-full grow sm:block`}
+            class={`hs-collapse ${
+              isDropdownOpen ? 'block' : 'hidden'
+            } overflow-hidden transition-all duration-300 basis-full grow sm:block`}
           >
-            
             <div class='flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5'>
-              <Link class=' dark:text-slate-100 font-semibold hover:text-slate-700 dark:hover:text-slate-300 hover:scale-110 transition-transform ' onClick={toggleDropdown} to='/mens'>
+              <Link
+                class=' dark:text-slate-100 font-semibold hover:text-slate-700 dark:hover:text-slate-300 hover:scale-110 transition-transform '
+                onClick={toggleDropdown}
+                to='/mens'
+              >
                 Men's
               </Link>
-              <Link class=' dark:text-slate-100 font-semibold hover:text-slate-700 dark:hover:text-slate-300 hover:scale-110 transition-transform ' onClick={toggleDropdown} to='/womens'>
+              <Link
+                class=' dark:text-slate-100 font-semibold hover:text-slate-700 dark:hover:text-slate-300 hover:scale-110 transition-transform '
+                onClick={toggleDropdown}
+                to='/womens'
+              >
                 Women's
               </Link>
-              <Link class=' dark:text-slate-100 font-semibold hover:text-slate-700 dark:hover:text-slate-300 hover:scale-110 transition-transform ' onClick={toggleDropdown} to='/jewelery'>
+              <Link
+                class=' dark:text-slate-100 font-semibold hover:text-slate-700 dark:hover:text-slate-300 hover:scale-110 transition-transform '
+                onClick={toggleDropdown}
+                to='/jewelery'
+              >
                 Jewelery
               </Link>
-              <Link class=' dark:text-slate-100 font-semibold hover:text-slate-700 dark:hover:text-slate-300 hover:scale-110 transition-transform ' onClick={toggleDropdown} to='/electronics'>
+              <Link
+                class=' dark:text-slate-100 font-semibold hover:text-slate-700 dark:hover:text-slate-300 hover:scale-110 transition-transform '
+                onClick={toggleDropdown}
+                to='/electronics'
+              >
                 Electronics
               </Link>
-
             </div>
+          </div>
+          <ShopingCart />
+          <div>
+            {/* <button className=' ml-7 text-lg font-extrabold text-blue-500 ' onClick={()=>{setCartClicked(true)}}>Cart</button> */}
+            {/* { cartClicked && <Cart setShowCart={setCartClicked} />} */}
+            {/* { cartClicked && <ShopingCart cartClick={setCartClicked} /> } */}
           </div>
         </nav>
       </header>
-      <Banner/>
-
+      <Banner />
     </div>
   );
 };

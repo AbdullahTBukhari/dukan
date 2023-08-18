@@ -24,7 +24,7 @@ const Banner = () => {
           <b>Libraries</b>
         </span>
         <p class='ml-2 inline-block text-black dark:text-white text-sm'>
-          React 18 - Redux ToolKit - RTK Query - React Router - Tailwind CSS - Preline UI
+          React 18 - Redux ToolKit - RTK Query - React Router - Tailwind CSS - Preline UI - Stripe Integration
         </p>
       </Link>
     </div>
